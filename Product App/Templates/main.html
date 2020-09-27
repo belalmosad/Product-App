@@ -1,0 +1,288 @@
+<html>
+    <head>
+        <title>Products App</title>
+        <style>
+            body {
+                background-color: black;
+                font-family: fantasy;
+                
+
+            }
+            .navbar h1 a{
+                
+                color: teal;
+                float: left;
+                margin: 0;
+                padding: 0;
+                font-size: 35px;
+            }
+            .navbar a {
+                text-decoration: none;
+                font-size: 25px;
+                color: teal;
+                float: right;
+                padding: 20px;
+            }
+            .navbar a:hover {
+                color: whitesmoke;
+                transition: 165ms;
+            }
+            .navbar form {
+                float: right;
+                padding: 20px;
+            }
+            .navbar form input {
+                height: 40px;
+                background-color: teal;
+                border: teal;
+                outline: none;
+                border-radius : 10px;
+                color: white;
+            }
+            .navbar form input::placeholder {
+                color: whitesmoke;
+                opacity: 80%;
+                font-size: 14px;
+            }
+            .home {
+                margin-top: 200px;
+                position: absolute;
+                margin-left: 17%;
+
+                
+            }
+            .home button {
+                display:block;
+                padding: 15px;
+                margin: 20px;
+                background-color: black;
+                border: teal solid 3px;
+                outline: none;
+                cursor: pointer;
+                width: 180px;
+                color: teal;
+                font-size: 20px;
+                text-decoration: none;
+                height: 80px;
+                font-family: fantasy;
+                letter-spacing: 2px;
+
+            }
+            .home a {
+                text-decoration: none;
+            }
+            .home button:hover {
+                background-color: whitesmoke;
+                transition: 350ms;
+                
+            }
+            .add_product {
+                position: absolute;
+                margin-top: 250px;
+                padding-left: 100px;
+                
+            }
+            .add_product label {
+                color: teal;
+            }
+            
+            .add_product input
+            {
+                display: block;
+            }
+            .add_product  #submit {
+                width: 180px;
+                height: 40px;
+                margin-top: 20px;
+                background-color: black;
+                outline: none;
+                border: teal 2px solid;
+                color: teal;
+                cursor: pointer;
+                font-family: fantasy;
+                font-size: 20px;;
+                letter-spacing: 2px;;
+            }
+            .add_product  #submit:hover {
+                background-color: whitesmoke;
+                transition: 180ms;
+            }
+            .products {
+                position: absolute;
+                left: 130;
+                top: 50;
+                width:350px;
+                
+            }
+            .products ul li 
+            {
+                color: teal;
+                font-size: 25px;;
+            }
+            .products p a {
+                color: teal;
+                font-family: fantasy;
+                text-decoration: none;
+                font-size: 30px;
+            }
+            .products p a:hover {
+                color: whitesmoke;
+                transition: 260ms;
+            }
+            .products  #description {
+                color: grey;
+                font-size: 25px;
+                
+            }
+            .product {
+                position: absolute;
+                top: 150;
+                left: 50;
+                width: 450px;
+
+            }
+            .product h1 {
+                color: teal;
+            }
+            .product p {
+                color: grey;
+            }
+            .product button {
+                width: 130px;
+                height: 55px;
+                background-color: black;
+                color: teal;
+                font-family: fantasy;
+                outline: none;
+                border: solid 2px teal;
+                font-size: 17px;
+                cursor: pointer;
+                margin-bottom: 50px;
+
+            }
+            .product button:hover {
+                background-color: whitesmoke;
+                transition: 260ms;
+            }
+            .comments 
+            {
+                position: absolute;
+                top:150;
+                right: 75;
+                width: 450px;;
+
+            }
+            .comments p {
+                color: whitesmoke;
+                display: inline-block;
+                margin: 5px;
+
+            }
+            .comments #date {
+                color: grey;
+                font-size: small;
+            }
+            .addcomment {
+                display: none;
+            }
+            .product .addcomment textarea {
+                background-color: black;
+                outline: none;
+                border: 2px solid teal;
+                color: whitesmoke;
+            }
+            .product .addcomment input {
+                width: 233px;
+                height: 60px;
+                display: block;
+                margin-top: 10px;;
+                background-color: black;
+                color: teal;
+                outline: none;
+                font-size: 16px;;
+                font-family: fantasy;
+                border: 2px teal solid;
+            }
+            .product .addcomment input:hover {
+                background-color: whitesmoke;
+                transition: 230ms;
+                cursor: pointer;
+            }
+            #delete_product {
+                width: 130px;
+                height: 55px;
+                background-color: black;
+                outline: none;
+                border: 2px solid rgb(155, 61, 61);
+                color : rgb(155, 61, 61);
+                display: inline-block;
+
+            }
+            #delete_product:hover {
+                background-color: whitesmoke;
+                transition: 260ms;
+            }
+            #edit_product{
+                width: 130px;
+                height: 55px;
+                background-color: black;
+                outline: none;
+                border: 2px solid rgb(216, 162, 63);
+                color :  rgb(216, 162, 63);
+                display: inline-block;
+
+            }
+            #edit_product:hover {
+                background-color: whitesmoke;
+                transition: 260ms;
+            }
+            .edit_product {
+                position: absolute;
+                margin-top: 250px;
+                padding-left: 100px;
+                
+            }
+            .edit_product label {
+                color:  rgb(216, 162, 63);
+            }
+            
+            .edit_product input
+            {
+                display: block;
+            }
+            .edit_product  #submit {
+                width: 180px;
+                height: 40px;
+                margin-top: 20px;
+                background-color: black;
+                outline: none;
+                border:  rgb(216, 162, 63) 2px solid;
+                color: rgb(216, 162, 63);
+                cursor: pointer;
+                font-family: fantasy;
+                font-size: 20px;;
+                letter-spacing: 2px;;
+            }
+            .edit_product  #submit:hover {
+                background-color: whitesmoke;
+                transition: 180ms;
+            }
+            
+        </style>
+    </head>
+    <body>
+        {% block content %} 
+        {% endblock %}
+        <div class="navbar">
+            <h1><a href="/">Product App</a></h1>
+            <a   {% if request.endpoint == 'products' %} style="color: whitesmoke;" {% endif %} class="active" href="/products">Products</a>
+            <form action="/search" method="POST"><input type="text" placeholder="search for a product" name="search_term"></form>
+        </div>
+        
+        
+        
+    </body>
+    <script>
+
+    </script>
+</html>

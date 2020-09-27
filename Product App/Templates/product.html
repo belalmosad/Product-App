@@ -1,0 +1,113 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<head>
+    <style>
+        .delete_comment{
+            outline: none;
+            border: none;
+            background-color: black;
+            cursor: pointer;
+            color: rgb(138, 46, 46);
+            float: right;
+            font-size: large;
+        }
+        .edit_comment{
+            outline: none;
+            border: none;
+            background-color: black;
+            cursor: pointer;
+            color: rgb(214, 201, 15);
+            float: right;
+            font-size: large;
+        }
+        
+    </style>
+</head>
+<div class="product">
+    <h1>{{product.name}}</h1>
+    <p>{{product.description}}</p>
+    <p>Model year: {{product.year}}</p>
+    <button id="addcomment"> &plus; Add comment</button>
+    <form style="display: inline;" action="/product/{{product.id}}/delete" method="DELETE">
+        <button id="delete_product" type="submit">Delete product</button>
+    </form>
+    <a href="/product/{{product.id}}/edit"><button id="edit_product">Edit product</button></a>
+    <div class="addcomment">
+        <form id="addcommentform" action="/add/comment/for/{{product.id}}" method="POST">
+            <textarea maxlength="45" name = "content" cols="30" rows="10" placeholder="add comment"></textarea>
+            <input type="submit" value="Add comment">
+        </form>
+        
+    </div>
+    
+</div>
+<div class="comments">
+    <h2 style="color:teal"> Total comments: {{comments|length}}</h2>
+    {% for comment in comments %}>
+            <div class="comment_body">
+                <p id = "comment_place" class="">{{comment.content}}</p>
+                <button class="delete_comment" data-id="{{comment.id}}">&cross;</button>
+                <button id = "edit_comment" class="edit_comment" data-id="{{comment.content}}">&#9998;</button>
+                <div id = "edit_form" style="display: none;" >
+                    <form action="/edit/comment/{{comment.id}}" method="POST" id="edit_comment_form" data-id="{{comment.id}}">
+                        <input type="text" id="new_comment" maxlength="40" name="new_comment"> 
+                        <input type="submit">
+                    </form>
+                </div>
+                <hr>
+                
+            </div>
+            
+            
+    {% endfor %}
+</div>
+
+<script>
+    document.getElementById('addcomment').onclick = function () {
+        document.getElementsByClassName('addcomment')[0].style.display = 'block'; 
+    }
+    
+    const allButtons = document.querySelectorAll('.delete_comment');
+    for(let i = 0; i < allButtons.length; i++)
+    {
+        const btn = allButtons[i];
+        btn.onclick = function(e) {
+            const commentId = e.target.dataset['id'];
+            console.log(commentId);
+            fetch('/delete/' + commentId, {
+                method: 'DELETE'
+            })
+            
+            .then(function(jsonResponse) {
+                location.reload();
+            })
+        }
+    }
+    const allEditCommentForms = document.querySelectorAll('#edit_comment_form');
+    const allEditBtns = document.querySelectorAll('#edit_comment');
+    const allForms = document.querySelectorAll('#edit_form');
+    const allCommentPlaces = document.querySelectorAll('#comment_place');
+    const allNewComments = document.querySelectorAll('#new_comment');
+    for(let i = 0; i < allEditCommentForms.length; i++)
+    {
+        const oneForm = allEditCommentForms[i];
+        const oneBtn = allEditBtns[i];
+        const form = allForms[i];
+        const oneCommentPlace = allCommentPlaces[i];
+        const oneNewComment = allNewComments[i];
+        oneBtn.onclick = function(e) {
+        oneForm.style.display = 'block';
+        form.style.display = 'block';
+        oneCommentPlace.style.display = 'none';
+        oneNewComment.value = e.target.dataset['id'];
+        }
+        
+        
+    }
+    
+    
+</script>
+
+
+{% endblock %}

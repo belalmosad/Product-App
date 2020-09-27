@@ -1,0 +1,16 @@
+{% extends  'main.html' %}
+
+{% block content %}
+<div class="add_product" >
+    <form action="/add/product" method="POST">
+        <label>Product name</label>
+        <input type="text" name="name">
+        <textarea placeholder="Description..." cols="30" rows="10" name="description"></textarea>
+        <br>
+        <label>year</label>
+        <input type="number" name="year">
+        <input type="submit" value="Add product" id = "submit"/>
+    </form>
+    
+</div>
+{% endblock %}

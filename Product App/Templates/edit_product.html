@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="edit_product" >
+    <form action="/product/{{product.id}}/edit" method="POST">
+        <label>Product name</label>
+        <input type="text" name="name" value="{{product.name}}">
+        <textarea  cols="30" rows="10" name="description">{{product.description}}</textarea>
+        <br>
+        <label>year</label>
+        <input type="number" name="year" value="{{product.year}}">
+        <input type="submit" value="Confirm" id = "submit"/>
+    </form>
+    
+</div>
+{% endblock %}

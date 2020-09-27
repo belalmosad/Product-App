@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="products">
+    {% for product in products %}
+    <p><a href="/product/{{product.id}}">{{product.name}} - </a> <span id="description">{{product.description}}</span></p>
+    {% endfor %}
+</div>
+
+{% endblock %}
